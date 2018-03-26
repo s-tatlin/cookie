@@ -1,0 +1,32 @@
+import pygame
+import tsk
+pygame.init()
+
+window = pygame.display.set_mode([1018, 573])
+c = pygame.time.Clock()
+
+background = sprite.Sprite("Cookie.jpg", 0, 0)
+perfect = sprite.Sprite("Coin.png", 435, 190)
+
+cookie = 0
+drawing = True
+while drawing:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            drawing = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            x, y = pygame.mouse.get_pos()
+            if perfect.rect.collidepoint(x, y):
+                cookie += 1
+                num = cookie + 0
+                print(str(num) + " Cookies")
+                if num == 50:
+                    cookie = 65
+                    print("You reach to 50 cookies; You earn 15 cookie")
+                    
+
+    background.draw()
+    perfect.draw()
+    
+    pygame.display.flip()
+    c.tick(30)
